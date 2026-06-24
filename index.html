@@ -1357,11 +1357,11 @@
 </div>
 
 <header>
-  <div class="eyebrow"><span class="dot"></span> 2026 FIFA WORLD CUP · 美墨加</div>
+  <div class="eyebrow"><span class="dot"></span> 2026 FIFA WORLD CUP · 美加墨</div>
   <div class="head-row">
     <h1>世界盃<span>戰報室</span></h1>
     <div class="update-block">
-      <button class="update-btn" id="updateBtn"><span class="spin">🔄</span> 即時更新</button>
+      <button class="update-btn" id="updateBtn"><span class="spin">🔄</span> 畫面整理</button>
       <div class="updated-ts" id="updatedAt"></div>
     </div>
   </div>
@@ -1415,10 +1415,8 @@
   </div>
 
   <div class="note">
-    <b>關於即時更新:</b> 點上方「即時更新」按鈕會重新整理畫面時間戳;這個頁面內嵌的是快照資料(非自動連線即時 API)。
-    想要換成最新比分,回來跟 Claude 說「更新比分」即可重新整理整份資料。<br>
-    <b>關於球員個人數據:</b> 比賽詳情(射門/控球/卡牌+進球時間軸)的資料來源只到「球隊」層級,沒有個人進球/助攻/出場時間,所以無法標示是誰射進的。<br>
-    <b>關於26人大名單:</b> 戰力排行榜的名單與「預估先發」標示來自你提供的試算表,並非官方正式公告,正式先發請以開賽前公告為準。<br>
+    <b>關於球員個人數據:</b> 比賽詳情(射門/控球/卡牌+進球時間軸)的資料來源只到「球隊」層級,沒有個人進球/助攻/出場時間。<br>
+    <b>關於26人大名單:</b> 戰力排行榜的名單與「預估先發」,並非官方正式公告,正式先發請以開賽前公告為準。<br>
     <b>關於歷史對戰:</b> 本屆(2026)交手紀錄會直接由賽程資料整理;跨屆資料目前收錄79場,包含近五年的美洲盃、歐洲國家盃、非洲國家盃、亞洲盃、中北美洲國家聯賽與金盃,另保留部分經典世界盃交手。
   </div>
 </main>
@@ -1512,7 +1510,7 @@ document.getElementById('updateBtn').addEventListener('click', (e) => {
   btn.classList.add('spinning');
   setTimeout(()=> btn.classList.remove('spinning'), 600);
   document.getElementById('updatedAt').textContent = '上次更新:' + new Date().toLocaleString('zh-TW', {timeZone:'Asia/Taipei'}) + '(台北時間)';
-  showToast('畫面已重新整理。這是手動快照,若要換成最新賽果,回來跟 Claude 說「更新比分」即可。');
+  showToast('畫面已重新整理');
 });
 
 /* ============ Ticker ============ */
