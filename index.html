@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" class="auth-locked-root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1702,6 +1702,51 @@
   }
 </style>
 
+
+<style id="password-lock-hard-hide-fix">
+  html.auth-locked-root,
+  body.auth-locked{
+    width:100% !important;
+    min-height:100dvh !important;
+    height:100dvh !important;
+    overflow:hidden !important;
+    position:fixed !important;
+    inset:0 !important;
+    overscroll-behavior:none !important;
+    touch-action:none !important;
+  }
+
+  body.auth-locked header,
+  body.auth-locked .ticker-wrap,
+  body.auth-locked main,
+  body.auth-locked .modal-overlay,
+  body.auth-locked .toast,
+  body.auth-locked .note{
+    display:none !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+  }
+
+  body.auth-locked #loginScreen{
+    display:grid !important;
+    position:fixed !important;
+    inset:0 !important;
+    width:100vw !important;
+    height:100vh !important;
+    height:100dvh !important;
+    min-height:100vh !important;
+    min-height:100dvh !important;
+    overflow:hidden !important;
+    overscroll-behavior:none !important;
+    touch-action:auto !important;
+    z-index:2147483647 !important;
+  }
+
+  body.auth-locked #loginScreen[hidden]{
+    display:grid !important;
+  }
+</style>
+
 </head>
 <body class="auth-locked">
 
@@ -2623,12 +2668,14 @@ document.getElementById('updatedAt').textContent = '上次更新:' + new Date().
   const error = document.getElementById('loginError');
 
   function unlockSite(){
-    screen.hidden = true;
+    document.documentElement.classList.remove('auth-locked-root');
     document.body.classList.remove('auth-locked');
+    screen.hidden = true;
   }
 
   function lockSite(){
     screen.hidden = false;
+    document.documentElement.classList.add('auth-locked-root');
     document.body.classList.add('auth-locked');
     requestAnimationFrame(() => input.focus());
   }
