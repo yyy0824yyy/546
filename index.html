@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026世界盃 即時戰報</title>
+<meta name="theme-color" content="#007AFF">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="2026世界盃">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="./worldcup-icon.png">
+<link rel="icon" type="image/png" href="./worldcup-icon.png">
+<link rel="manifest" href="./manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -1666,12 +1673,44 @@
   }
 </style>
 
+
+<style id="messi-home-login-icon">
+  .login-badge.login-photo-badge{
+    width:76px !important;
+    height:76px !important;
+    margin:0 auto 18px !important;
+    padding:0 !important;
+    border-radius:22px !important;
+    overflow:hidden !important;
+    background:#007AFF !important;
+    box-shadow:0 10px 24px rgba(0,122,255,0.20), 0 0 0 1px rgba(0,0,0,0.06) inset !important;
+    color:#FFFFFF !important;
+    font-size:20px !important;
+    font-weight:800 !important;
+  }
+  .login-badge.login-photo-badge img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .login-badge.login-photo-badge span{
+    display:none;
+    width:100%;
+    height:100%;
+    place-items:center;
+  }
+</style>
+
 </head>
 <body class="auth-locked">
 
 <div id="loginScreen" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
   <div class="login-card" id="loginCard">
-    <div class="login-badge" aria-hidden="true">WC</div>
+    <div class="login-badge login-photo-badge" aria-hidden="true">
+      <img src="./worldcup-icon.png" alt="" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+      <span>WC</span>
+    </div>
     <p class="login-eyebrow">2026 FIFA WORLD CUP</p>
     <h1 id="loginTitle">世界盃戰報室</h1>
     <p class="login-copy">請輸入存取密碼，密碼區分大小寫</p>
