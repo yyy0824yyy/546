@@ -1747,6 +1747,28 @@
   }
 </style>
 
+
+<style id="local-emoji-flag-fix">
+  .flag-emoji{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    line-height:1 !important;
+    vertical-align:-3px !important;
+    margin-right:2px !important;
+    border-radius:2px !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    overflow:visible !important;
+    font-family:'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif !important;
+  }
+  td.team-cell .flag-emoji,
+  .rank-team .flag-emoji,
+  .recent-opp .flag-emoji{
+    margin-right:6px !important;
+  }
+</style>
+
 </head>
 <body class="auth-locked">
 
@@ -1846,10 +1868,18 @@ const ISO_MAP = {
   FRA:'fr', NOR:'no', SEN:'sn', IRQ:'iq', ARG:'ar', AUT:'at', DZA:'dz', JOR:'jo',
   POR:'pt', COL:'co', COD:'cd', UZB:'uz', ENG:'gb-eng', GHA:'gh', PAN:'pa', CRO:'hr'
 };
+const FLAG_EMOJI_MAP = {
+  MEX:'🇲🇽', KOR:'🇰🇷', CZE:'🇨🇿', RSA:'🇿🇦', CAN:'🇨🇦', SUI:'🇨🇭', BIH:'🇧🇦', QAT:'🇶🇦',
+  BRA:'🇧🇷', MAR:'🇲🇦', SCO:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', HTI:'🇭🇹', USA:'🇺🇸', AUS:'🇦🇺', PAR:'🇵🇾', TUR:'🇹🇷',
+  GER:'🇩🇪', CIV:'🇨🇮', ECU:'🇪🇨', CUW:'🇨🇼', NED:'🇳🇱', JPN:'🇯🇵', SWE:'🇸🇪', TUN:'🇹🇳',
+  EGY:'🇪🇬', IRN:'🇮🇷', BEL:'🇧🇪', NZL:'🇳🇿', ESP:'🇪🇸', URU:'🇺🇾', CPV:'🇨🇻', KSA:'🇸🇦',
+  FRA:'🇫🇷', NOR:'🇳🇴', SEN:'🇸🇳', IRQ:'🇮🇶', ARG:'🇦🇷', AUT:'🇦🇹', DZA:'🇩🇿', JOR:'🇯🇴',
+  POR:'🇵🇹', COL:'🇨🇴', COD:'🇨🇩', UZB:'🇺🇿', ENG:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', GHA:'🇬🇭', PAN:'🇵🇦', CRO:'🇭🇷'
+};
 function flagEmoji(code, size){
-  const iso = ISO_MAP[code] || 'xx';
+  const flag = FLAG_EMOJI_MAP[code] || '🏳️';
   const w = size || 22;
-  return `<img class="flag-img" style="width:${w}px;" src="https://flagcdn.com/w80/${iso}.png" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://flagcdn.com/w80/${iso.split('-')[0]}.png';" alt="${code}">`;
+  return `<span class="flag-img flag-emoji" style="font-size:${Math.max(16, Math.round(w*0.9))}px;width:${w}px;height:${Math.round(w*0.72)}px;" role="img" aria-label="${code}">${flag}</span>`;
 }
 function cnName(code){ return DATA.team_cn[code] || code; }
 function teamLabel(code){ return `${flagEmoji(code)} ${cnName(code)}<span style="color:var(--chalk-faint);font-weight:400;">(${code})</span>`; }
